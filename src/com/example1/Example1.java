@@ -1,4 +1,4 @@
-package example1;
+package com.example1;
 
 public class Example1 {
 
