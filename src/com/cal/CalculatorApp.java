@@ -11,24 +11,42 @@ public class CalculatorApp {
 		number2 = 5;
 
 		double result;
-		
-		CalculateSum(); // Method Calling
-		
-		result = number1 - number2;
+
+		result = calculateSum(number1, number2); // Method Calling
 		System.out.println(result);
 
-		result = number1 / number2;
+		result = calculateSubOfTwoNumbers(number1, number2);
 		System.out.println(result);
 
-		result = number1 * number2;
+		result = calculateDivOfTwoNumbers(number1, number2);
+		System.out.println(result);
+
+		result = calculateMulOfTwoNumbers(number1, number2);
 		System.out.println(result);
 
 	}
-	
-	public static void CalculateSum() {
-		double result = 10+55;
-		System.out.println(result);
-		
+
+	public static double calculateMulOfTwoNumbers(double number1, int number2) {
+		double result;
+		result = number1 * number2;
+		return result;
+	}
+
+	public static double calculateDivOfTwoNumbers(double number1, int number2) {
+		double result;
+		result = number1 / number2;
+		return result;
+	}
+
+	public static double calculateSubOfTwoNumbers(double number1, int number2) {
+		double result = number1 - number2;
+		return result;
+	}
+
+	public static double calculateSum(double number1, int number2) {
+		double result = number1 + number2;
+		return result;
+
 	}
 
 }
