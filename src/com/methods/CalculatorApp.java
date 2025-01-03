@@ -1,4 +1,4 @@
-package com.cal;
+package com.methods;
 
 public class CalculatorApp {
 
