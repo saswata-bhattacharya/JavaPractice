@@ -7,12 +7,12 @@ public class Demo1 {
 
 		int x = 10;
 
-		//Array declaration
+		// Array declaration
 		int marks[] = new int[3];
 //		System.out.println(x);
 //		System.out.println(marks);
 //		System.out.println((marks.length));
-		
+
 		// Assigning values
 		marks[0] = 8;
 		marks[1] = 7;
