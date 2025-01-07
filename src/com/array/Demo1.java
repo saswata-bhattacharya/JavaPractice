@@ -6,6 +6,7 @@ public class Demo1 {
 		// TODO Auto-generated method stub
 
 		int x = 10;
+		System.out.println(x);
 
 		// Array declaration
 		int marks[] = new int[3];
