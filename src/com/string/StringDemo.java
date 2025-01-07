@@ -4,7 +4,7 @@ public class StringDemo {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		//String Demo
 		int x = 10;
 		String name1 = "saswata";
 		String name2 = "saswata";
