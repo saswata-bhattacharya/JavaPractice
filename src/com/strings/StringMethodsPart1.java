@@ -1,6 +1,6 @@
 package com.strings;
 
-public class StringMethodsExample {
+public class StringMethodsPart1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
