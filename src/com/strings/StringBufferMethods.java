@@ -40,15 +40,29 @@ public class StringBufferMethods {
 		
 		//Reverse
 		System.out.println(sb);
-		System.out.println(sb.reverse());
+		//System.out.println(sb.reverse());
 		
 		//Insert(int offset, String)
 		//System.out.println(sb.insert(11, null));
 		
+		//deleteCharAt
+		System.out.println(sb.deleteCharAt(4));
 		
+		//delete -> from a range of index
+		System.out.println(sb.delete(0, 4));
 		
+		//replace(int start, int end, subString)
+		System.out.println(sb.replace(0, 4, "Hiiii"));
 		
-		
+		//capacity
+		StringBuffer sb2 = new StringBuffer();
+		System.out.println(sb2.capacity());
+		sb.append("This is a sample text");
+		System.out.println(sb.capacity());
+		/*
+		 * How is the capacity calculated in String Buffer
+		 * new_capacity = (old_capacity *2) + 2		
+		*/	
 		
 
 	}
