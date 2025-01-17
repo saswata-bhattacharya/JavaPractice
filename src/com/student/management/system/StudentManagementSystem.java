@@ -62,9 +62,7 @@ public class StudentManagementSystem {
 		// TODO Auto-generated method stub
 		System.out.println("Print All Students Information");
 		for (int i = 0; i < index; i++) {
-			System.out.println("======================================================");
-			System.out.println("                                                      ");
-
+			
 			System.out.println("Student Name: " + studentName[i]);
 			System.out.println("Student Age " + studentAge[i]);
 			System.out.println("Student RollNumber " + studentRollNumber[i]);
@@ -75,7 +73,6 @@ public class StudentManagementSystem {
 			System.out.println("Science: " + marksObtainedInScience[i]);
 			System.out.println("Student Grade: " + studentGrade[i]);
 
-			System.out.println("                                                      ");
 			System.out.println("======================================================");
 		}
 
