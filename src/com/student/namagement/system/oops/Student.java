@@ -1,10 +1,18 @@
 package com.student.namagement.system.oops;
 
 public class Student {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	String name;
+	int age;
+	int rollNumber;
+	double marksObtainedInEnglish;
+	double marksObtainedInMaths;
+	double marksObtainedInScience;
+	String grade;
+	
+	public void calculateTotalMarks() {
+		double totalMarks = marksObtainedInEnglish + marksObtainedInMaths + marksObtainedInScience;
+		System.out.println("Total Marks Obtained: "+totalMarks);
 	}
+	
 
 }
