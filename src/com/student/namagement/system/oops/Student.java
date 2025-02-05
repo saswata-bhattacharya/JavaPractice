@@ -1,13 +1,30 @@
 package com.student.namagement.system.oops;
 
+import java.util.Objects;
+
 public class Student {
 	private String name;
 	private int age;
+	private String address;
+	private String contactNumber;
 	private int rollNumber;
 	private double marksObtainedInEnglish;
 	private double marksObtainedInMaths;
 	private double marksObtainedInScience;
+	private double totalMarks;
+	private double percentage;
 	private String grade;
+
+	public Student(String name, int age, int rollNumber, double marksObtainedInEnglish, double marksObtainedInMaths,
+			double marksObtainedInScience) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.rollNumber = rollNumber;
+		this.marksObtainedInEnglish = marksObtainedInEnglish;
+		this.marksObtainedInMaths = marksObtainedInMaths;
+		this.marksObtainedInScience = marksObtainedInScience;
+	}
 
 	public String getName() {
 		return name;
@@ -28,6 +45,8 @@ public class Student {
 			System.out.println("Invalid age for High School");
 		}
 	}
+	
+	
 
 	public int getRollNumber() {
 		return rollNumber;
@@ -47,10 +66,9 @@ public class Student {
 	}
 
 	public void setMarksObtainedInEnglish(double marksObtainedInEnglish) {
-		if(marksObtainedInEnglish >= 0 && marksObtainedInEnglish <=100) {
-		this.marksObtainedInEnglish = marksObtainedInEnglish;
-	}
-		else {
+		if (marksObtainedInEnglish >= 0 && marksObtainedInEnglish <= 100) {
+			this.marksObtainedInEnglish = marksObtainedInEnglish;
+		} else {
 			System.out.println("Invalid Marks");
 		}
 	}
@@ -86,13 +104,78 @@ public class Student {
 		return grade;
 	}
 
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public double getTotalMarks() {
+		return totalMarks;
 	}
 
-	public double calculateTotalMarks() {
-		double totalMarks = marksObtainedInEnglish + marksObtainedInMaths + marksObtainedInScience;
-		return totalMarks;
+	public double getPercentage() {
+		return percentage;
+	}
+
+	public void calculateTotalMarks() {
+		totalMarks = marksObtainedInEnglish + marksObtainedInMaths + marksObtainedInScience;
+	}
+
+	public void calculatePercentage() {
+		percentage = totalMarks / 3;
+	}
+
+	public void calculateGrade() {
+		if (percentage >= 95) {
+			grade = "A+";
+		} else if (percentage >= 90) {
+			grade = "A";
+		} else if (percentage >= 85) {
+			grade = "B+";
+		} else if (percentage >= 80) {
+			grade = "B";
+		} else if (percentage >= 75) {
+			grade = "C+";
+		} else if (percentage >= 70) {
+			grade = "C";
+		} else if (percentage >= 65) {
+			grade = "D+";
+		} else if (percentage >= 60) {
+			grade = "D";
+		} else {
+			grade = "F";
+		}
+
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(age, grade, marksObtainedInEnglish, marksObtainedInMaths, marksObtainedInScience, name,
+				percentage, rollNumber, totalMarks);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		return age == other.age && Objects.equals(grade, other.grade)
+				&& Double.doubleToLongBits(marksObtainedInEnglish) == Double
+						.doubleToLongBits(other.marksObtainedInEnglish)
+				&& Double.doubleToLongBits(marksObtainedInMaths) == Double.doubleToLongBits(other.marksObtainedInMaths)
+				&& Double.doubleToLongBits(marksObtainedInScience) == Double
+						.doubleToLongBits(other.marksObtainedInScience)
+				&& Objects.equals(name, other.name)
+				&& Double.doubleToLongBits(percentage) == Double.doubleToLongBits(other.percentage)
+				&& rollNumber == other.rollNumber
+				&& Double.doubleToLongBits(totalMarks) == Double.doubleToLongBits(other.totalMarks);
+	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", age=" + age + ", rollNumber=" + rollNumber + ", marksObtainedInEnglish="
+				+ marksObtainedInEnglish + ", marksObtainedInMaths=" + marksObtainedInMaths
+				+ ", marksObtainedInScience=" + marksObtainedInScience + ", totalMarks=" + totalMarks + ", percentage="
+				+ percentage + ", grade=" + grade + "]";
 	}
 
 }
