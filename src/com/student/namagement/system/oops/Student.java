@@ -17,13 +17,15 @@ public class Student {
 
 	public Student(String name, int age, int rollNumber, double marksObtainedInEnglish, double marksObtainedInMaths,
 			double marksObtainedInScience) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.rollNumber = rollNumber;
-		this.marksObtainedInEnglish = marksObtainedInEnglish;
-		this.marksObtainedInMaths = marksObtainedInMaths;
-		this.marksObtainedInScience = marksObtainedInScience;
+		if ((validateAge(age) && validateRollNumber(rollNumber) && validateMarks(marksObtainedInScience)
+				&& validateMarks(marksObtainedInMaths) && validateMarks(marksObtainedInEnglish))) {
+			this.name = name;
+			this.age = age;
+			this.rollNumber = rollNumber;
+			this.marksObtainedInEnglish = marksObtainedInEnglish;
+			this.marksObtainedInMaths = marksObtainedInMaths;
+			this.marksObtainedInScience = marksObtainedInScience;
+		}
 	}
 
 	public String getName() {
@@ -45,8 +47,34 @@ public class Student {
 			System.out.println("Invalid age for High School");
 		}
 	}
-	
-	
+
+	public boolean validateAge(int age) {
+		if (age < 21 && age >= 10) {
+			return true;
+		} else {
+			System.err.println("Invalid age for Student");
+			return false;
+		}
+	}
+
+	public boolean validateRollNumber(int rollNumber) {
+		if (rollNumber >= 1 && rollNumber <= 100) {
+			return true;
+		} else {
+			System.err.println("Invalid roll number for Student");
+			return false;
+		}
+	}
+
+	public boolean validateMarks(double marksForTheSubjects) {
+		if (marksForTheSubjects >= 100 || marksForTheSubjects < 0) {
+			System.err.println("Invalid marks for Student");
+			return false;
+		} else {
+			return true;
+		}
+
+	}
 
 	public int getRollNumber() {
 		return rollNumber;
@@ -121,24 +149,28 @@ public class Student {
 	}
 
 	public void calculateGrade() {
-		if (percentage >= 95) {
-			grade = "A+";
-		} else if (percentage >= 90) {
-			grade = "A";
-		} else if (percentage >= 85) {
-			grade = "B+";
-		} else if (percentage >= 80) {
-			grade = "B";
-		} else if (percentage >= 75) {
-			grade = "C+";
-		} else if (percentage >= 70) {
-			grade = "C";
-		} else if (percentage >= 65) {
-			grade = "D+";
-		} else if (percentage >= 60) {
-			grade = "D";
+		if (percentage == 0) {
+			grade = "Cannot be calculated";
 		} else {
-			grade = "F";
+			if (percentage >= 95) {
+				grade = "A+";
+			} else if (percentage >= 90) {
+				grade = "A";
+			} else if (percentage >= 85) {
+				grade = "B+";
+			} else if (percentage >= 80) {
+				grade = "B";
+			} else if (percentage >= 75) {
+				grade = "C+";
+			} else if (percentage >= 70) {
+				grade = "C";
+			} else if (percentage >= 65) {
+				grade = "D+";
+			} else if (percentage >= 60) {
+				grade = "D";
+			} else {
+				grade = "F";
+			}
 		}
 
 	}
