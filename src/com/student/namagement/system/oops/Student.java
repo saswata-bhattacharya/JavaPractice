@@ -15,12 +15,16 @@ public class Student {
 	private double percentage;
 	private String grade;
 
-	public Student(String name, int age, int rollNumber, double marksObtainedInEnglish, double marksObtainedInMaths,
-			double marksObtainedInScience) {
+	public Student(String name, int age, String address, String contactNumber, int rollNumber,
+			double marksObtainedInEnglish, double marksObtainedInMaths, double marksObtainedInScience) {
+
 		if ((validateAge(age) && validateRollNumber(rollNumber) && validateMarks(marksObtainedInScience)
-				&& validateMarks(marksObtainedInMaths) && validateMarks(marksObtainedInEnglish))) {
+				&& validateMarks(marksObtainedInMaths) && validateMarks(marksObtainedInEnglish)
+				&& validateAddress(address) && validateContactNumber(contactNumber))) {
 			this.name = name;
 			this.age = age;
+			this.address = address;
+			this.contactNumber = contactNumber;
 			this.rollNumber = rollNumber;
 			this.marksObtainedInEnglish = marksObtainedInEnglish;
 			this.marksObtainedInMaths = marksObtainedInMaths;
@@ -41,7 +45,7 @@ public class Student {
 	}
 
 	public void setAge(int age) {
-		if (age >= 10 && age <= 18) {
+		if (validateAge(age)) {
 			this.age = age;
 		} else {
 			System.out.println("Invalid age for High School");
@@ -81,7 +85,7 @@ public class Student {
 	}
 
 	public void setRollNumber(int rollNumber) {
-		if (rollNumber >= 0) {
+		if (validateRollNumber(rollNumber)) {
 			this.rollNumber = rollNumber;
 		} else {
 			System.out.println("Invalid roll no");
@@ -94,7 +98,7 @@ public class Student {
 	}
 
 	public void setMarksObtainedInEnglish(double marksObtainedInEnglish) {
-		if (marksObtainedInEnglish >= 0 && marksObtainedInEnglish <= 100) {
+		if (validateMarks(marksObtainedInEnglish)) {
 			this.marksObtainedInEnglish = marksObtainedInEnglish;
 		} else {
 			System.out.println("Invalid Marks");
@@ -107,7 +111,7 @@ public class Student {
 
 	public void setMarksObtainedInMaths(double marksObtainedInMaths) {
 
-		if (marksObtainedInMaths >= 0 && marksObtainedInMaths <= 100) {
+		if (validateMarks(marksObtainedInMaths)) {
 			this.marksObtainedInMaths = marksObtainedInMaths;
 		} else {
 			System.out.println("Invalid Marks");
@@ -120,7 +124,7 @@ public class Student {
 	}
 
 	public void setMarksObtainedInScience(double marksObtainedInScience) {
-		if (marksObtainedInScience >= 0 && marksObtainedInScience <= 100) {
+		if (validateMarks(marksObtainedInScience)) {
 			this.marksObtainedInScience = marksObtainedInScience;
 		} else {
 			System.out.println("Invalid Marks");
@@ -202,12 +206,71 @@ public class Student {
 				&& Double.doubleToLongBits(totalMarks) == Double.doubleToLongBits(other.totalMarks);
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		if (validateAddress(address)) {
+			this.address = address;
+		}
+
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		if (validateContactNumber(contactNumber)) {
+			this.contactNumber = contactNumber;
+		}
+	}
+
+	public boolean validateAddress(String address) {
+		if (!address.isEmpty()) {
+			return true;
+		} else {
+			System.err.println("Address is empty");
+			return false;
+		}
+
+	}
+
+	public boolean validateContactNumber(String contactNumber) {
+		if (contactNumber != null && contactNumber.matches("\\d{10}")) {
+			return true;
+		} else {
+			System.err.println("Invalid Contact Number");
+			return false;
+		}
+
+	}
+
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", age=" + age + ", rollNumber=" + rollNumber + ", marksObtainedInEnglish="
-				+ marksObtainedInEnglish + ", marksObtainedInMaths=" + marksObtainedInMaths
-				+ ", marksObtainedInScience=" + marksObtainedInScience + ", totalMarks=" + totalMarks + ", percentage="
-				+ percentage + ", grade=" + grade + "]";
+		return "Student [name=" + name + ", age=" + age + ", address=" + address + ", contactNumber=" + contactNumber
+				+ ", rollNumber=" + rollNumber + ", marksObtainedInEnglish=" + marksObtainedInEnglish
+				+ ", marksObtainedInMaths=" + marksObtainedInMaths + ", marksObtainedInScience="
+				+ marksObtainedInScience + ", totalMarks=" + totalMarks + ", percentage=" + percentage + ", grade="
+				+ grade + "]";
+	}
+	
+	public void displayStudentInfo() {
+		System.out.println("---------- STUDENT INFORMATION -----------");
+		System.out.println("NAME: "+name);
+		System.out.println("AGE: "+age);
+		System.out.println("ADDRESS: "+address);
+		System.out.println("CONTACT NUMBER: "+contactNumber);
+		System.out.println("ROLL NUMBER: "+rollNumber);
+		System.out.println("ENGLISH MARKS: "+marksObtainedInEnglish);
+		System.out.println("MATHS MARKS: "+marksObtainedInMaths);
+		System.out.println("SCIENCE MARKS: "+marksObtainedInScience);
+		System.out.println("------------------------------------------");
+		System.out.println("TOTAL MARKS: "+totalMarks);
+		System.out.println("PERCENTAGE: "+percentage+" %");
+		System.out.println("GRADE: "+grade);
+		
 	}
 
 }
